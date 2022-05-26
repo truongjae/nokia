@@ -21,8 +21,8 @@ var nam = d.getFullYear();
 var listchuong = ["mp3/hettien.mp3", "mp3/khonglienlacdc.mp3", "mp3/sdtkhongdung.mp3"];
 var mp3chuong = document.getElementById("mp3chuong");
 
-var sdt = ["TrÆ°á»ng Jae", "113", "Tráº§n Äá»©c Po", "18008198"];
-var nhatky = ["113", "TrÆ°á»ng Jae", "Tráº§n Dáº§n", "Huáº¥n Hoa Há»“ng"];
+var sdt = ["Trường Jae", "113", "Trần Đức Po", "18008198"];
+var nhatky = ["113", "Trường Jae", "Trần Dần", "Huấn Hoa Hồng"];
 var info = new Array();
 info[0] = ["113", "0345382198", "0123456789", "0808080808"];
 info[1] = ["00:05:51", "00:01:29", "00:32:07", "00:12:31"];
@@ -33,10 +33,10 @@ var videoyt = ["https://www.youtube.com/embed/viOPWvIj28A", "https://www.youtube
     "https://www.youtube.com/embed/32sYGCOYJUM", "https://www.youtube.com/embed/_5cUW112Haw"
 ];
 var listtitle = [
-    "MÃ¡y TÃ­nh", "Camera", "Danh Báº¡",
-    "Nháº­t KÃ½ Cuá»™c Gá»i", "Lá»‹ch", "TrÃ¬nh Duyá»‡t",
-    "Youtube", "Báº£n Äá»“", "Thá»i Tiáº¿t", "Nghe Nháº¡c", "Facebook",
-    "Nháº¯n Tin", "TrÃ² ChÆ¡i", "Giá»›i Thiá»‡u", "Bitcoin", "Tin Tá»©c", "Mua Sáº¯m"
+    "Máy Tính", "Camera", "Danh Bạ",
+    "Nhật Ký Cuộc Gọi", "Lịch", "Trình Duyệt",
+    "Youtube", "Bản Đồ", "Thời Tiết", "Nghe Nhạc", "Facebook",
+    "Nhắn Tin", "Trò Chơi", "Giới Thiệu", "Bitcoin", "Tin Tức", "Mua Sắm"
 ];
 var listimg = [
     "img/calculator.png", "img/camera.png", "img/phonebook.png",
@@ -61,22 +61,22 @@ let pressHoldDuration = 50;
 function pressingDown(e) {
     requestAnimationFrame(timer);
     e.preventDefault();
-    // console.log("giá»¯!");
+    // console.log("giữ!");
 }
 
 function notPressingDown(e) {
     cancelAnimationFrame(timerID);
     counter = 0;
-    // console.log("khÃ´ng di vÃ o");
+    // console.log("không di vào");
 }
 
 function timer() {
-    // console.log("Ä‘ang giá»¯");
+    // console.log("đang giữ");
     if (counter < pressHoldDuration) {
         timerID = requestAnimationFrame(timer);
         counter++;
     } else {
-        // console.log("dá»«ng láº¡i");
+        // console.log("dừng lại");
         btnthang.dispatchEvent(pressHoldEvent);
     }
 }
@@ -89,14 +89,14 @@ function doSomething(e) {
                 mp3chuong.src = "mp3/mp3rung.mp3";
                 mp3chuong.play();
             } catch {}
-            new imlang("ÄÃ£ báº­t im láº·ng", "img/no-sound.png", "IM Láº¶NG").main();
+            new imlang("Đã bật im lặng", "img/no-sound.png", "IM LẶNG").main();
             checkimlang = 0;
         } else {
             try {
                 mp3chuong.src = "mp3/nhanphim.mp3";
                 mp3chuong.play();
             } catch {}
-            new imlang("ÄÃ£ táº¯t im láº·ng", "img/volume.png", "VIETTEL").main();
+            new imlang("Đã tắt im lặng", "img/volume.png", "VIETTEL").main();
             checkimlang = 1;
         }
     }
@@ -128,9 +128,9 @@ function getweather() {
             var descValue = data['weather'][0]['description'];
             var cloudsValue = data['wind']['speed'];
             str += nameValue + "\n";
-            str += "Thá»i Tiáº¿t: " + descValue;
-            str += "\nNhiá»‡t Äá»™: " + (parseFloat(tempValue) - 273.15).toFixed(2).toString() + "Â°C";
-            str += "\nTá»‘c Äá»™ GiÃ³: " + cloudsValue + " m/s";
+            str += "Thời Tiết: " + descValue;
+            str += "\nNhiệt Độ: " + (parseFloat(tempValue) - 273.15).toFixed(2).toString() + "°C";
+            str += "\nTốc Độ Gió: " + cloudsValue + " m/s";
             document.getElementById("imgcall").innerText = str;
         })
         .catch(err => function() {});
@@ -351,7 +351,7 @@ function nutnguon() {
     index = -1;
     document.getElementsByClassName("desktop")[0].style.display = "block";
     document.getElementById("txtmenu").innerText = "Menu";
-    document.getElementById("txtdanhba").innerText = "Danh Báº¡";
+    document.getElementById("txtdanhba").innerText = "Danh Bạ";
     document.getElementById("desktop").style.backgroundColor = "rgb(204, 204, 193)";
     document.getElementById("desktop").style.color = "black";
     var sao = document.getElementById("btn10");
@@ -458,9 +458,9 @@ function selectmenu() {
             new calllogs().main();
             break;
         case 4:
-            if (thu == 8) var date = "Chá»§ Nháº­t" + "\nNgÃ y " + ngay + " ThÃ¡ng " + thang + " NÄƒm " + nam;
-            else var date = "Thá»© " + thu + "\nNgÃ y " + ngay + " ThÃ¡ng " + thang + " NÄƒm " + nam;
-            date += "\n --Äáº¸P TROAI--";
+            if (thu == 8) var date = "Chủ Nhật" + "\nNgày " + ngay + " Tháng " + thang + " Năm " + nam;
+            else var date = "Thứ " + thu + "\nNgày " + ngay + " Tháng " + thang + " Năm " + nam;
+            date += "\n --ĐẸP TROAI--";
             new showinfo(date).main();
             break;
         case 5:
@@ -492,8 +492,8 @@ function selectmenu() {
             new gameran().main();
             break;
         case 13:
-            var info = "TÃ¡c Giáº£: Nguyá»…n Gia TrÆ°á»ng" + "\nFB: https://fb.com/www.python.org" +
-                "\nPhiÃªn Báº£n: NhÃ´ ki anroiOS v1" + "\nHá»‡ Ä‘iá»u hÃ nh máº¡nh nháº¥t tháº¿ giá»›i!";
+            var info = "Tác Giả: Nguyễn Gia Trường" + "\nFB: https://fb.com/www.python.org" +
+                "\nPhiên Bản: Nhô ki anroiOS v1" + "\nHệ điều hành mạnh nhất thế giới!";
             new showinfo(info).main();
             break;
         case 14:
@@ -562,9 +562,9 @@ function chucnangnghenhac() {
     vol.appendChild(imgkoimlang);
     controllers.appendChild(vol);
     var nextSongTitle = createChucNang("div", "nextSongTitle", "100%", "10%");
-    nextSongTitle.innerHTML = "<b>Tiáº¿p theo: </b>";
+    nextSongTitle.innerHTML = "<b>Tiếp theo: </b>";
     var trove = createChucNang("h2", "trove", "30%", "10%");
-    trove.innerText = "Trá»Ÿ vá»";
+    trove.innerText = "Trở về";
     nghenhac.appendChild(songTitle);
     nghenhac.appendChild(songSlider);
     nghenhac.appendChild(songTime);
@@ -614,9 +614,9 @@ function loadSong() {
     } catch {}
 
     if (currentSong == songs.length - 1) {
-        nextSongTitle.innerHTML = "<b>Tiáº¿p theo: </b>" + songs[0];
+        nextSongTitle.innerHTML = "<b>Tiếp theo: </b>" + songs[0];
     } else {
-        nextSongTitle.innerHTML = "<b>Tiáº¿p theo: </b>" + hienthi2;
+        nextSongTitle.innerHTML = "<b>Tiếp theo: </b>" + hienthi2;
     }
     song.playbackRate = 1;
     song.volume = volumeSlider.value;
@@ -699,14 +699,14 @@ var timebtn;
 var txtnhantin = "";
 var txtnguoinhan = "";
 var arrbtn1 = [".", ",", "1", "@", "!", "&", "(", ")", "=", "%", "#"];
-var arrbtn2 = ["a", "b", "c", "2", "Ã¡", "Ã ", "Ã£", "áº¡", "áº£", "Äƒ", "áº¯", "áº±", "áº·", "áºµ", "áº³", "Ã¢", "áº¥", "áº§", "áº­", "áº«", "áº©"];
-var arrbtn3 = ["d", "e", "f", "3", "Ä‘", "Ã©", "Ã¨", "áº¹", "áº½", "Ãª", "áº¿", "á»", "á»‡", "á»…", "á»ƒ"];
-var arrbtn4 = ["g", "h", "i", "4", "Ã­", "Ã¬", "á»‹", "Ä©", "á»‰"];
-var arrbtn5 = ["j", "k", "l", "5", "Ã­", "Ã¬", "Ä©", "á»‹", "á»‰"];
-var arrbtn6 = ["m", "n", "o", "6", "Ã³", "Ã²", "á»", "Ãµ", "á»", "Æ¡", "á»›", "á»", "á»£", "á»¡", "á»Ÿ", "Ã´", "á»‘", "á»“", "á»™", "á»—", "á»•"];
+var arrbtn2 = ["a", "b", "c", "2", "á", "à", "ã", "ạ", "ả", "ă", "ắ", "ằ", "ặ", "ẵ", "ẳ", "â", "ấ", "ầ", "ậ", "ẫ", "ẩ"];
+var arrbtn3 = ["d", "e", "f", "3", "đ", "é", "è", "ẹ", "ẽ", "ê", "ế", "ề", "ệ", "ễ", "ể"];
+var arrbtn4 = ["g", "h", "i", "4", "í", "ì", "ị", "ĩ", "ỉ"];
+var arrbtn5 = ["j", "k", "l", "5", "í", "ì", "ĩ", "ị", "ỉ"];
+var arrbtn6 = ["m", "n", "o", "6", "ó", "ò", "ọ", "õ", "ỏ", "ơ", "ớ", "ờ", "ợ", "ỡ", "ở", "ô", "ố", "ồ", "ộ", "ỗ", "ổ"];
 var arrbtn7 = ["p", "q", "r", "s", "7"];
-var arrbtn8 = ["t", "u", "v", "8", "Ãº", "Ã¹", "á»¥", "á»§", "Å©", "Æ°", "á»©", "á»«", "á»±", "á»¯", "á»­"];
-var arrbtn9 = ["w", "x", "y", "z", "Ã½", "á»³", "á»µ", "á»¹", "á»·"];
+var arrbtn8 = ["t", "u", "v", "8", "ú", "ù", "ụ", "ủ", "ũ", "ư", "ứ", "ừ", "ự", "ữ", "ử"];
+var arrbtn9 = ["w", "x", "y", "z", "ý", "ỳ", "ỵ", "ỹ", "ỷ"];
 var arrbtn0 = [" ", "0"];
 var arrbtn10 = ["*", "/", "+", "-"];
 var arrbtn11 = ["#"];
@@ -747,7 +747,7 @@ class maytinhbotui {
         document.getElementById("nhappheptoan").style.fontSize = "30px";
         document.getElementById("nhappheptoan").style.borderRadius = "10px";
         document.getElementById("nhappheptoan").style.border = "none";
-        document.getElementById("nhappheptoan").placeholder = "Nháº­p phÃ©p toÃ¡n";
+        document.getElementById("nhappheptoan").placeholder = "Nhập phép toán";
         document.getElementById("nhappheptoan").style.fontWeight = "bold";
         var nhan = document.getElementById("centertop");
         var chia = document.getElementById("centerbot");
@@ -769,12 +769,12 @@ class maytinhbotui {
         }
         nhan.onclick = function() {
             text = document.getElementById("nhappheptoan").value;
-            text = text += "Ã—";
+            text = text += "×";
             document.getElementById("nhappheptoan").value = text;
         }
         chia.onclick = function() {
             text = document.getElementById("nhappheptoan").value;
-            text = text += "Ã·";
+            text = text += "÷";
             document.getElementById("nhappheptoan").value = text;
         }
         cong.onclick = function() {
@@ -799,11 +799,11 @@ class maytinhbotui {
         bang.onclick = function() {
             text = document.getElementById("nhappheptoan").value;
             try {
-                var str = text.replace(/Ã—/g, "*").replace(/Ã·/g, "/").replace(/,/g, ".");
+                var str = text.replace(/×/g, "*").replace(/÷/g, "/").replace(/,/g, ".");
                 text = eval(str);
                 document.getElementById("nhappheptoan").value = text;
             } catch {
-                document.getElementById("nhappheptoan").value = "Nháº­p ngu!";
+                document.getElementById("nhappheptoan").value = "Nhập ngu!";
             }
         }
 
@@ -869,11 +869,11 @@ class maychupanh {
                 } catch {}
                 // nutnguon();
             }
-            /*nhan.innerText = "â‡‘";
-            chia.innerText = "â‡“";
-            cong.innerText = "â‡’";
-            tru.innerText = "â‡";
-            bang.innerText = "â—";*/
+            /*nhan.innerText = "⇑";
+            chia.innerText = "⇓";
+            cong.innerText = "⇒";
+            tru.innerText = "⇐";
+            bang.innerText = "●";*/
 
         bang.onclick = function() {
             if (oncam == 0) {
@@ -1028,11 +1028,11 @@ class menu {
         document.getElementById("menu").appendChild(createChucNang("div", "botitem", "100%", "20%"));
 
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Chá»n";
+        document.getElementById("botitemleft").innerText = "Chọn";
 
 
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+        document.getElementById("botitemright").innerText = "Trở về";
 
         nextanh();
         checkhome = 0;
@@ -1120,7 +1120,7 @@ class danhba {
         manhinh.appendChild(createChucNang("div", "phonebook", "100%", "100%"));
         document.getElementById("phonebook").appendChild(createChucNang("div", "titlelistphone", "100%", "20%"));
         document.getElementById("phonebook").style.borderRadius = "10px";
-        document.getElementById("titlelistphone").innerText = "Danh SÃ¡ch";
+        document.getElementById("titlelistphone").innerText = "Danh Sách";
         document.getElementById("phonebook").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         for (var i = 0; i < 4; i++) {
             document.getElementById("listphone").appendChild(createChucNang("a", "phone" + i.toString(), "100%", "25%"));
@@ -1131,9 +1131,9 @@ class danhba {
         //
         document.getElementById("phonebook").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Gá»i";
+        document.getElementById("botitemleft").innerText = "Gọi";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Há»§y";
+        document.getElementById("botitemright").innerText = "Hủy";
         var exit = document.getElementById("rightbot");
         nextphone();
         checkhome = 0;
@@ -1221,15 +1221,15 @@ class calling {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "Äang Gá»i";
-        danggoi = "Äang Gá»i";
+        document.getElementById("titlecall").innerText = "Đang Gọi";
+        danggoi = "Đang Gọi";
         checkhome = 0;
         var timegoi = setInterval(() => {
             danggoi += ".";
             document.getElementById("titlecall").innerText = danggoi;
             checkgoi++;
             if (checkgoi == 3) {
-                danggoi = "Äang Gá»i";
+                danggoi = "Đang Gọi";
                 checkgoi = 0;
             }
         }, 300);
@@ -1258,9 +1258,9 @@ class calling {
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Ráº£nh Tay";
+        document.getElementById("botitemleft").innerText = "Rảnh Tay";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Káº¿t ThÃºc";
+        document.getElementById("botitemright").innerText = "Kết Thúc";
 
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -1338,7 +1338,7 @@ class calllogs {
         manhinh.appendChild(createChucNang("div", "calllog", "100%", "100%"));
         document.getElementById("calllog").appendChild(createChucNang("div", "titlelistphone", "100%", "20%"));
         document.getElementById("calllog").style.borderRadius = "10px";
-        document.getElementById("titlelistphone").innerText = "Nháº­t KÃ½ Cuá»™c Gá»i";
+        document.getElementById("titlelistphone").innerText = "Nhật Ký Cuộc Gọi";
         document.getElementById("calllog").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         for (var i = 0; i < 4; i++) {
             document.getElementById("listphone").appendChild(createChucNang("a", "phone" + i.toString(), "100%", "25%"));
@@ -1353,7 +1353,7 @@ class calllogs {
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
         document.getElementById("botitemleft").innerText = "Xem";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Há»§y";
+        document.getElementById("botitemright").innerText = "Hủy";
         var exit = document.getElementById("rightbot");
         nextcalllog();
         exit.onclick = function() {
@@ -1440,21 +1440,21 @@ class infouser {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "ThÃ´ng Tin";
+        document.getElementById("titlecall").innerText = "Thông Tin";
         document.getElementById("call").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         document.getElementById("listphone").appendChild(createChucNang("div", "username", "100%", "20%"));
         document.getElementById("username").innerText = usergoi;
         document.getElementById("username").style.textAlign = "center";
 
         document.getElementById("listphone").appendChild(createChucNang("p", "imgcall", "100%", "60%"));
-        document.getElementById("imgcall").innerText = "SDT: " + info[0][indexphone] + "\n" + "Thá»i lÆ°á»£ng: " + info[1][indexphone] + "\n" + "LÃºc: " + info[2][indexphone];
+        document.getElementById("imgcall").innerText = "SDT: " + info[0][indexphone] + "\n" + "Thời lượng: " + info[1][indexphone] + "\n" + "Lúc: " + info[2][indexphone];
         document.getElementById("imgcall").style.textAlign = "center";
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
         document.getElementById("botitemleft").innerText = "";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+        document.getElementById("botitemright").innerText = "Trở về";
         checkhome = 0;
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -1518,15 +1518,15 @@ class callingbynumber {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "Äang Gá»i";
-        danggoi = "Äang Gá»i";
+        document.getElementById("titlecall").innerText = "Đang Gọi";
+        danggoi = "Đang Gọi";
         checkhome = 0;
         var timegoi = setInterval(() => {
             danggoi += ".";
             document.getElementById("titlecall").innerText = danggoi;
             checkgoi++;
             if (checkgoi == 3) {
-                danggoi = "Äang Gá»i";
+                danggoi = "Đang Gọi";
                 checkgoi = 0;
             }
         }, 300);
@@ -1548,9 +1548,9 @@ class callingbynumber {
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Ráº£nh Tay";
+        document.getElementById("botitemleft").innerText = "Rảnh Tay";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Káº¿t ThÃºc";
+        document.getElementById("botitemright").innerText = "Kết Thúc";
         setTimeout(function() {
             try {
                 var linkchuong = listchuong[Math.floor(Math.random() * 2)];
@@ -1644,7 +1644,7 @@ class showinfo {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "ThÃ´ng Tin";
+        document.getElementById("titlecall").innerText = "Thông Tin";
         document.getElementById("call").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         document.getElementById("listphone").appendChild(createChucNang("p", "imgcall", "100%", "80%"));
         document.getElementById("imgcall").innerText = textinfo;
@@ -1654,7 +1654,7 @@ class showinfo {
         // document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
         // document.getElementById("botitemleft").innerText = "";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+        document.getElementById("botitemright").innerText = "Trở về";
         checkhome = 0;
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -1721,7 +1721,7 @@ class inputnumber {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "Nháº­p Sá»‘:";
+        document.getElementById("titlecall").innerText = "Nhập Số:";
         document.getElementById("call").appendChild(createChucNang("div", "listphone", "100%", "60%"));
 
         document.getElementById("listphone").appendChild(createChucNang("p", "nhapvaoso", "97%", "70%"));
@@ -1729,9 +1729,9 @@ class inputnumber {
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Gá»i";
+        document.getElementById("botitemleft").innerText = "Gọi";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "XÃ³a";
+        document.getElementById("botitemright").innerText = "Xóa";
         checkhome = 0;
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -1750,7 +1750,7 @@ class inputnumber {
             }
             if (valuenumber.length == 0) {
                 checkdelnumber--;
-                document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+                document.getElementById("botitemright").innerText = "Trở về";
             }
             if (checkdelnumber == -1) {
                 try {
@@ -1776,14 +1776,14 @@ class inputnumber {
             if (valuenumber == "*#06#") {
                 try {
                     document.getElementById("call").remove();
-                    var info = "Sá»‘ seri: 36924837065451145\n05/05/2021\nRM-647\n(c) Nokia N1280 V 04.25\nLanguage: MR";
+                    var info = "Số seri: 36924837065451145\n05/05/2021\nRM-647\n(c) Nokia N1280 V 04.25\nLanguage: MR";
                     new showinfo(info).main();
                 } catch {}
             }
             if (valuenumber == "*#0000#") {
                 try {
                     document.getElementById("call").remove();
-                    var info = "Há»‡ Ä‘iá»u hÃ nh: NhÃ´ ki anroiOS\n" +
+                    var info = "Hệ điều hành: Nhô ki anroiOS\n" +
                         "RAM: 128GB\nROM: 1000TB\n" + "CHIP: i9-10900K\n" +
                         "CARD: NVIDIA-RTX-3090\n";
                     new showinfo(info).main();
@@ -1972,7 +1972,7 @@ class notelock {
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+        document.getElementById("botitemright").innerText = "Trở về";
         checkhome = 0;
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -2079,7 +2079,7 @@ class homelock {
 
         nutnguon();
         document.getElementById("txtdanhba").innerText = "";
-        document.getElementById("txtmenu").innerText = "M.KhÃ³a";
+        document.getElementById("txtmenu").innerText = "M.Khóa";
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
             // nutnguon();
@@ -2099,7 +2099,7 @@ class homelock {
         document.getElementById("lefttop").onclick = function() {
             try {
                 document.getElementsByClassName("desktop")[0].style.display = "none";
-                new notelock("Nháº¥n phÃ­m * Ä‘á»ƒ má»Ÿ khÃ³a", "img/notelock.png").main();
+                new notelock("Nhấn phím * để mở khóa", "img/notelock.png").main();
             } catch {}
         }
         document.getElementById("centermid").onclick = function() {}
@@ -2166,7 +2166,7 @@ class imlang {
         //
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "Trá»Ÿ vá»";
+        document.getElementById("botitemright").innerText = "Trở về";
         checkhome = 0;
         var exit = document.getElementById("rightbot");
         exit.onclick = function() {
@@ -2311,16 +2311,16 @@ class nhantin {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "Soáº¡n Tin Nháº¯n";
+        document.getElementById("titlecall").innerText = "Soạn Tin Nhắn";
         document.getElementById("call").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         document.getElementById("listphone").appendChild(createChucNang("textarea", "imgcall", "98%", "100%"));
         document.getElementById("imgcall").innerText = textinfo;
-        document.getElementById("imgcall").placeholder = "Soáº¡n Tin Nháº¯n Má»›i";
+        document.getElementById("imgcall").placeholder = "Soạn Tin Nhắn Mới";
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Gá»­i";
+        document.getElementById("botitemleft").innerText = "Gửi";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "XÃ³a";
+        document.getElementById("botitemright").innerText = "Xóa";
         checkhome = 0;
         var vanbantinnhan = document.getElementById("imgcall");
         var btn1 = document.getElementById("btn1");
@@ -2852,15 +2852,15 @@ class inputsdtnhantin {
         document.getElementById("call").appendChild(createChucNang("div", "titlecall", "100%", "20%"));
         document.getElementById("call").style.borderRadius = "10px";
         document.getElementById("call").style.backgroundColor = "rgb(204, 204, 193)";
-        document.getElementById("titlecall").innerText = "Gá»­i Tin Nháº¯n";
+        document.getElementById("titlecall").innerText = "Gửi Tin Nhắn";
         document.getElementById("call").appendChild(createChucNang("div", "listphone", "100%", "60%"));
         document.getElementById("listphone").appendChild(createChucNang("textarea", "imgcall", "98%", "30%"));
-        document.getElementById("imgcall").placeholder = "Nháº­p NgÆ°á»i Nháº­n";
+        document.getElementById("imgcall").placeholder = "Nhập Người Nhận";
         document.getElementById("call").appendChild(createChucNang("div", "botitem", "100%", "20%"));
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemleft", "30%", "100%"));
-        document.getElementById("botitemleft").innerText = "Gá»­i";
+        document.getElementById("botitemleft").innerText = "Gửi";
         document.getElementById("botitem").appendChild(createChucNang("div", "botitemright", "30%", "100%"));
-        document.getElementById("botitemright").innerText = "XÃ³a";
+        document.getElementById("botitemright").innerText = "Xóa";
         checkhome = 0;
         var vanbantinnhan = document.getElementById("imgcall");
         var btn1 = document.getElementById("btn1");
@@ -3358,7 +3358,7 @@ class inputsdtnhantin {
         document.getElementById("lefttop").onclick = function() {
             try {
                 document.getElementById("call").remove();
-                var str = "ÄÃ£ gá»­i: " + '"' + txtnhantin + '"' + " Ä‘áº¿n " + txtnguoinhan;
+                var str = "Đã gửi: " + '"' + txtnhantin + '"' + " đến " + txtnguoinhan;
                 new done(str).main();
                 txtnhantin = "";
                 txtnguoinhan = "";
@@ -3367,7 +3367,7 @@ class inputsdtnhantin {
         document.getElementById("centermid").onclick = function() {
             try {
                 document.getElementById("call").remove();
-                var str = "ÄÃ£ gá»­i: " + '"' + txtnhantin + '"' + " Ä‘áº¿n " + txtnguoinhan;
+                var str = "Đã gửi: " + '"' + txtnhantin + '"' + " đến " + txtnguoinhan;
                 new done(str).main();
                 txtnhantin = "";
                 txtnguoinhan = "";
@@ -3473,7 +3473,7 @@ class snake {
         if (this.x == x && this.y == y) {
             this.maxCells++;
             diemran++;
-            document.getElementById("diemran").innerText = "Äiá»ƒm: " + diemran;
+            document.getElementById("diemran").innerText = "Điểm: " + diemran;
             return true;
         }
         return false;
